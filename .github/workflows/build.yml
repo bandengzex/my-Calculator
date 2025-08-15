@@ -26,7 +26,9 @@ jobs:
 
       # 4. 构建 Debug APK
       - name: Build debug APK
-        run: ./gradlew assembleDebug
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: assembleDebug
 
       # 5. 上传构建产物
       - name: Upload APK
