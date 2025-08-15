@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="calculator_background">#F5F5F5</color>
+    <color name="display_background">#E8E8E8</color>
+    <color name="button_background">#FFFFFF</color>
+    <color name="button_pressed">#E0E0E0</color>
+    <color name="function_button">#F0F0F0</color>
+    <color name="function_button_pressed">#D0D0D0</color>
+    <color name="operator_button">#FFE0B2</color>
+    <color name="operator_button_pressed">#FFCC80</color>
+    <color name="equals_button">#4CAF50</color>
+    <color name="equals_button_pressed">#45A049</color>
+    <color name="clear_button">#FFCDD2</color>
+    <color name="clear_button_pressed">#EF9A9A</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_function">#1976D2</color>
+    <color name="text_operator">#E65100</color>
+    <color name="border_color">#BDBDBD</color>
+</resources>

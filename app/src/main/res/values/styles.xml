@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ScientificCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/operator_button</item>
+        <item name="colorSecondaryVariant">@color/operator_button_pressed</item>
+        <item name="colorOnSecondary">@color/text_operator</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Calculator Button Style -->
+    <style name="CalculatorButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:gravity">center</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/border_color</item>
+    </style>
+
+    <!-- Number Button Style -->
+    <style name="NumberButton" parent="CalculatorButton">
+        <item name="backgroundTint">@color/button_background</item>
+    </style>
+
+    <!-- Function Button Style -->
+    <style name="FunctionButton" parent="CalculatorButton">
+        <item name="backgroundTint">@color/function_button</item>
+        <item name="android:textColor">@color/text_function</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Operator Button Style -->
+    <style name="OperatorButton" parent="CalculatorButton">
+        <item name="backgroundTint">@color/operator_button</item>
+        <item name="android:textColor">@color/text_operator</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Equals Button Style -->
+    <style name="EqualsButton" parent="CalculatorButton">
+        <item name="backgroundTint">@color/equals_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Clear Button Style -->
+    <style name="ClearButton" parent="CalculatorButton">
+        <item name="backgroundTint">@color/clear_button</item>
+        <item name="android:textColor">@color/text_operator</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

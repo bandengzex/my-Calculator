@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/calculator_background"
+    tools:context=".MainActivity">
+
+    <!-- Display Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:background="@color/display_background"
+        android:padding="16dp">
+
+        <!-- Expression Display (MathView for LaTeX rendering) -->
+        <io.github.kexanie.library.MathView
+            android:id="@+id/expression_display"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="end|bottom"
+            android:textSize="24sp"
+            android:textColor="@color/text_primary"
+            android:background="@android:color/transparent" />
+
+        <!-- Result Display -->
+        <TextView
+            android:id="@+id/result_display"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="end|bottom"
+            android:text="@string/display_hint"
+            android:textSize="32sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <!-- Keyboard Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Row 1: Function buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/ClearButton" android:text="@string/button_clear_all" android:id="@+id/btn_clear_all" />
+            <Button style="@style/ClearButton" android:text="@string/button_clear" android:id="@+id/btn_clear" />
+            <Button style="@style/ClearButton" android:text="@string/button_backspace" android:id="@+id/btn_backspace" />
+            <Button style="@style/FunctionButton" android:text="@string/button_degree" android:id="@+id/btn_degree" />
+            <Button style="@style/FunctionButton" android:text="@string/button_minute" android:id="@+id/btn_minute" />
+            <Button style="@style/FunctionButton" android:text="@string/button_second" android:id="@+id/btn_second" />
+        </LinearLayout>
+
+        <!-- Row 2: Advanced functions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/FunctionButton" android:text="@string/button_fraction" android:id="@+id/btn_fraction" />
+            <Button style="@style/FunctionButton" android:text="@string/button_square" android:id="@+id/btn_square" />
+            <Button style="@style/FunctionButton" android:text="@string/button_cube" android:id="@+id/btn_cube" />
+            <Button style="@style/FunctionButton" android:text="@string/button_power" android:id="@+id/btn_power" />
+            <Button style="@style/FunctionButton" android:text="@string/button_sqrt" android:id="@+id/btn_sqrt" />
+            <Button style="@style/OperatorButton" android:text="@string/button_divide" android:id="@+id/btn_divide" />
+        </LinearLayout>
+
+        <!-- Row 3: Trigonometric functions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/FunctionButton" android:text="@string/button_sin" android:id="@+id/btn_sin" />
+            <Button style="@style/FunctionButton" android:text="@string/button_cos" android:id="@+id/btn_cos" />
+            <Button style="@style/FunctionButton" android:text="@string/button_tan" android:id="@+id/btn_tan" />
+            <Button style="@style/FunctionButton" android:text="@string/button_log" android:id="@+id/btn_log" />
+            <Button style="@style/FunctionButton" android:text="@string/button_ln" android:id="@+id/btn_ln" />
+            <Button style="@style/OperatorButton" android:text="@string/button_multiply" android:id="@+id/btn_multiply" />
+        </LinearLayout>
+
+        <!-- Row 4: Inverse trigonometric functions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/FunctionButton" android:text="@string/button_asin" android:id="@+id/btn_asin" />
+            <Button style="@style/FunctionButton" android:text="@string/button_acos" android:id="@+id/btn_acos" />
+            <Button style="@style/FunctionButton" android:text="@string/button_atan" android:id="@+id/btn_atan" />
+            <Button style="@style/FunctionButton" android:text="@string/button_factorial" android:id="@+id/btn_factorial" />
+            <Button style="@style/FunctionButton" android:text="@string/button_percent" android:id="@+id/btn_percent" />
+            <Button style="@style/OperatorButton" android:text="@string/button_minus" android:id="@+id/btn_minus" />
+        </LinearLayout>
+
+        <!-- Row 5: Numbers and basic operations -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/NumberButton" android:text="@string/button_7" android:id="@+id/btn_7" />
+            <Button style="@style/NumberButton" android:text="@string/button_8" android:id="@+id/btn_8" />
+            <Button style="@style/NumberButton" android:text="@string/button_9" android:id="@+id/btn_9" />
+            <Button style="@style/FunctionButton" android:text="@string/button_left_paren" android:id="@+id/btn_left_paren" />
+            <Button style="@style/FunctionButton" android:text="@string/button_right_paren" android:id="@+id/btn_right_paren" />
+            <Button style="@style/OperatorButton" android:text="@string/button_plus" android:id="@+id/btn_plus" />
+        </LinearLayout>
+
+        <!-- Row 6: More numbers and functions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/NumberButton" android:text="@string/button_4" android:id="@+id/btn_4" />
+            <Button style="@style/NumberButton" android:text="@string/button_5" android:id="@+id/btn_5" />
+            <Button style="@style/NumberButton" android:text="@string/button_6" android:id="@+id/btn_6" />
+            <Button style="@style/FunctionButton" android:text="@string/button_reciprocal" android:id="@+id/btn_reciprocal" />
+            <Button style="@style/FunctionButton" android:text="@string/button_pi" android:id="@+id/btn_pi" />
+            <Button style="@style/OperatorButton" android:text="@string/button_equals" android:id="@+id/btn_equals" />
+        </LinearLayout>
+
+        <!-- Row 7: Last row of numbers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/NumberButton" android:text="@string/button_1" android:id="@+id/btn_1" />
+            <Button style="@style/NumberButton" android:text="@string/button_2" android:id="@+id/btn_2" />
+            <Button style="@style/NumberButton" android:text="@string/button_3" android:id="@+id/btn_3" />
+            <Button style="@style/FunctionButton" android:text="@string/button_plus_minus" android:id="@+id/btn_plus_minus" />
+            <Button style="@style/FunctionButton" android:text="@string/button_e" android:id="@+id/btn_e" />
+            <Button style="@style/OperatorButton" android:text="@string/button_dot" android:id="@+id/btn_dot" />
+        </LinearLayout>
+
+        <!-- Row 8: Zero button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button style="@style/NumberButton" android:text="@string/button_0" android:id="@+id/btn_0" android:layout_weight="2" />
+            <Button style="@style/FunctionButton" android:text="@string/button_backspace" android:id="@+id/btn_backspace2" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
