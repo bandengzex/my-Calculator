@@ -9,9 +9,7 @@ on:
         required: true
         default: 'debug'
         type: choice
-        options:
-          - debug
-          - release
+        options: (debug, release)
 
 jobs:
   build:
