@@ -20,8 +20,22 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Check if gradlew exists and set permissions
+        run: |
+          if [ ! -f "gradlew" ]; then
+            echo "Warning: gradlew not found. Using gradle wrapper from distribution."
+            mkdir -p gradle/wrapper
+            echo "distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.4-bin.zip
+networkTimeout=10000
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
+            echo "#!/bin/sh\nexport GRADLE_USER_HOME="${GRADLE_USER_HOME:-${HOME}/.gradle}"\nexecutable="$(dirname "$0")/gradle/wrapper/gradle-wrapper.jar"\nif [ ! -f "$executable" ]; then\n    echo "Error: $executable does not exist!" >&2\n    exit 1\nfi\nexport JAVA_HOME="${JAVA_HOME:-${JDK_HOME}}"\nif [ -n "$JAVA_HOME" ]; then\n    java_cmd="$JAVA_HOME/bin/java"\nelse\n    java_cmd="java"\n    echo "Warning: JAVA_HOME environment variable is not set." >&2\nfi\nexec "$java_cmd" "-Dorg.gradle.appname=$0" -classpath "$executable" org.gradle.wrapper.GradleWrapperMain "$@"" > gradlew
+            chmod +x gradlew
+          else
+            chmod +x gradlew
+          fi"}]}}}
 
       - name: Build with Gradle
         run: ./gradlew build
