@@ -35,7 +35,7 @@ zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
             chmod +x gradlew
           else
             chmod +x gradlew
-          fi"}]}}}
+          fi
 
       - name: Build with Gradle
         run: ./gradlew build
