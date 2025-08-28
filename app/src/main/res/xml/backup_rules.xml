@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This file defines the backup rules for your application.
+    Learn more at https://developer.android.com/guide/topics/data/autobackup
+-->
+<full-backup-content>
+    <!-- Include files in the manifest, res, and assets directories. -->
+    <include domain="manifest" path="*" />
+    <include domain="res" path="*" />
+    <include domain="assets" path="*" />
+
+    <!-- Exclude any files that might contain sensitive information. -->
+    <exclude domain="file" path="*.log" />
+</full-backup-content>

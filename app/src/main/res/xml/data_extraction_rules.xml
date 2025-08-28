@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This file defines the data extraction rules for your application.
+    Learn more at https://developer.android.com/about/versions/12/behavior-changes-12#data-extraction-rules
+-->
+<data-extraction-rules>
+    <!-- Allow all data types for backup. -->
+    <cloud-backup>
+        <include domain="root" path="/" />
+    </cloud-backup>
+
+    <!-- Allow all data types for device transfer. -->
+    <device-transfer>
+        <include domain="root" path="/" />
+    </device-transfer>
+</data-extraction-rules>
