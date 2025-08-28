@@ -1,10 +1,17 @@
 name: Android Build
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+    # 手动触发构建，用户可以在GitHub界面上点击按钮运行工作流
+    inputs:
+      build_type:
+        description: '构建类型'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+        - debug
+        - release
 
 jobs:
   build:
@@ -38,7 +45,7 @@ zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
           fi
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew assemble${{ inputs.build_type == 'release' && 'Release' || 'Debug' }}
 
       - name: Run tests
         run: ./gradlew test
@@ -46,5 +53,5 @@ zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: app-build
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: app-build-${{ inputs.build_type }}
+          path: app/build/outputs/apk/${{ inputs.build_type }}/app-${{ inputs.build_type }}.apk
