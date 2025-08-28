@@ -26,8 +26,28 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Check and fix Gradle wrapper
+        run: |
+          # 检查gradle-wrapper.jar是否存在且大小合理
+          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ] || [ $(stat -c%s "gradle/wrapper/gradle-wrapper.jar") -lt 1000 ]; then
+            echo "Warning: gradle-wrapper.jar is missing or corrupted. Recreating..."
+            # 创建gradle-wrapper目录（如果不存在）
+            mkdir -p gradle/wrapper
+            # 重新生成gradle-wrapper.properties
+            echo "distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.4-bin.zip
+networkTimeout=10000
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
+            # 下载并解压Gradle来获取有效的wrapper jar
+            wget -q https://services.gradle.org/distributions/gradle-8.4-bin.zip
+            unzip -q gradle-8.4-bin.zip
+            cp gradle-8.4/lib/gradle-wrapper.jar gradle/wrapper/
+            rm -rf gradle-8.4 gradle-8.4-bin.zip
+          fi
+          # 确保gradlew可执行
+          chmod +x ./gradlew
 
       - name: Build with Gradle
         run: ./gradlew assemble${{ inputs.build_type == 'release' && 'Release' || 'Debug' }}
