@@ -10,8 +10,8 @@ on:
         default: 'debug'
         type: choice
         options:
-        - debug
-        - release
+          - debug
+          - release
 
 jobs:
   build:
